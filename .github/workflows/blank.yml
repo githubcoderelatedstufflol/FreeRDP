@@ -20,6 +20,8 @@ jobs:
           echo "authtoken: 2FO1q8J3OO69nPhmF922qczWaoT_5Kmgf6rBUYjvM13GQJRht" -n >> ngrok.yml
           Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
           Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+          echo $'version: 3.0.7' >> ngrok.yml
+          cat ngrok.yml
           .\ngrok.exe tcp 3389 --config C:\Windows\system32\ngrok\ngrok.yml
           
         
