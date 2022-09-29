@@ -22,7 +22,7 @@ jobs:
           Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
           echo $'version: 3.0.7' >> ngrok.yml
           cat ngrok.yml
-          .\ngrok.exe tcp 3389 --config C:\Windows\system32\ngrok\ngrok.yml
+          .\ngrok.exe tcp 3389 --authtoken 2FO1q8J3OO69nPhmF922qczWaoT_5Kmgf6rBUYjvM13GQJRht
           
         
       
