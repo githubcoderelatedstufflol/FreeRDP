@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: windows-2019
+    timeout-minutes: 999999999999
+    steps:
+      - name: Setting everything up!
+        run: |
+          Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
+          copy ngrok.zip C:\Windows\system32
+          cd C:\Windows\system32
+          Expand-Archive ngrok.zip -DestinationPath C:\Windows\system32\ngrok
+          cd ngrok
+          New-Item -Path "C:\Windows\system32\ngrok\ngrok.yml"
+          echo "authtoken: 2FO1q8J3OO69nPhmF922qczWaoT_5Kmgf6rBUYjvM13GQJRht" -n >> ngrok.yml
+          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+          Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+          ngrok tcp 3389
+          
+        
+      
+        
+  
